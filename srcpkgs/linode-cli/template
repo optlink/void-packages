@@ -1,0 +1,25 @@
+# Template file for 'linode-cli'
+pkgname=linode-cli
+version=5.17.2
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools python3-requests python3-yaml python3-terminaltables"
+depends="python3-terminaltables python3-requests python3-yaml"
+short_desc="Linode CLI"
+maintainer="Kelsey Maes <kelsey@maes.one>"
+license="BSD-3-Clause"
+homepage="https://github.com/linode/linode-cli"
+distfiles="https://github.com/linode/linode-cli/archive/refs/tags/${version}.tar.gz"
+checksum=74dc6239ab8fde1e8c3acfe9f0a665e21d8e63124d7e3cf07c39773039549799
+
+pre_build() {
+	python3 -m linodecli bake "https://www.linode.com/docs/api/openapi.yaml" --skip-config
+	cp data-3 linodecli/
+}
+
+post_install() {
+	rm -r ${DESTDIR}/etc
+	vcompletion linode-cli.sh bash
+
+	vlicense LICENSE
+}
