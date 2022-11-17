@@ -1,6 +1,6 @@
 # Template file for 'liburing'
 pkgname=liburing
-version=2.2
+version=2.3
 revision=1
 build_style=configure
 configure_args="--mandir=/usr/share/man"
@@ -10,7 +10,7 @@ maintainer="Dragon Friend <friend-dragon@proton.me>"
 license="LGPL-2.1-only"
 homepage="https://git.kernel.dk/cgit/liburing"
 distfiles="https://git.kernel.dk/cgit/liburing/snapshot/liburing-${version}.tar.gz"
-checksum=f52bad18e3ff11185165d52d2d7391e90a0fce8f33f2ee611ad9a8ce1feaf914
+checksum=@0ac7d12ac0a744257a7d83c8a1f01d41736619165407156cc3eb540aa658b6c3
 
 liburing-devel_package() {
 	short_desc+=" - development files"
